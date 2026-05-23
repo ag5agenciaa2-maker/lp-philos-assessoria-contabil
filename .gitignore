@@ -1,0 +1,10 @@
+# Pastas de IDE e Configurações locais
+.vscode/
+.idea/
+.claude/
+.gemini/
+*.log
+
+# Sistema Operacional
+Thumbs.db
+Desktop.ini
