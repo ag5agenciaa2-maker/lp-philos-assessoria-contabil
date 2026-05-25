@@ -6,7 +6,9 @@
   <meta name="description" content="Termos e Condições de Uso - Philos Assessoria Contábil. Conheça as regras e diretrizes de utilização do nosso website.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;500;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Carregamento Assíncrono do Google Fonts (elimina bloqueio de renderização) -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;500;700&family=Playfair+Display:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;500;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
   <title>Termos e Condições - Philos Assessoria Contábil</title>
   <link rel="icon" href="Assets/favicon-philos-assessoria-contabil.ico" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
@@ -402,7 +404,7 @@
       Cookies
   </button>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
   <script src="cookie-banner.js" defer></script>
 </body>
 </html>

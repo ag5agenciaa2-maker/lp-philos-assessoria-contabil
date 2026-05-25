@@ -5199,6 +5199,8 @@ body.subpage li {
 .footer-legal-links a {
   color: rgba(255, 255, 255, 0.4);
   transition: color 0.3s ease;
+  padding: 8px 0; /* Acessibilidade: touch target aumentado */
+  display: inline-block;
 }
 
 .footer-legal-links a:hover {
@@ -5242,4 +5244,9 @@ body.subpage li {
   .footer-legal-links {
     gap: 6px 0;
   }
+}
+
+/* PageSpeed & Acessibilidade: Utilidade de travamento de scroll sem forçar reflow */
+body.no-scroll {
+  overflow: hidden !important;
 }

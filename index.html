@@ -5,9 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Philos Assessoria Contabil - Especialistas em assessoria contabil, fiscal e departamento pessoal. Atendemos empresas de todo o Brasil.">
   <meta name="keywords" content="assessoria contabil, contabilidade, departamento pessoal, fiscal, BPO financeiro, Nova Iguacu, RJ">
+  <!-- PageSpeed preconnect e preload da imagem LCP (poster) -->
+  <link rel="preload" href="Assets/philos-assessoria-contabil-proprietario-escritorio.webp" as="image" fetchpriority="high">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;500;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Carregamento Assíncrono do Google Fonts (elimina bloqueio de renderização) -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;500;700&family=Playfair+Display:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;500;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
   <title>Philos Assessoria Contábil | Sua empresa cresce. A Philos cuida do resto.</title>
   <link rel="icon" href="Assets/favicon-philos-assessoria-contabil.ico" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
@@ -1232,7 +1238,7 @@
       Cookies
   </button>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
   <script src="cookie-banner.js" defer></script>
 </body>
 </html>

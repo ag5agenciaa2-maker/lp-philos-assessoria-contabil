@@ -54,15 +54,21 @@ const faqData = [
 // ===== NAVBAR =====
 const navbar = document.getElementById('navbar');
 let lastScroll = 0;
+let scrollRafPending = false;
 
 function handleNavbarScroll() {
-  const scrollY = window.scrollY;
-  if (scrollY > 50) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-  lastScroll = scrollY;
+  if (scrollRafPending) return;
+  scrollRafPending = true;
+  requestAnimationFrame(() => {
+    scrollRafPending = false;
+    const scrollY = window.scrollY;
+    if (scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+    lastScroll = scrollY;
+  });
 }
 
 window.addEventListener('scroll', handleNavbarScroll, { passive: true });
@@ -77,13 +83,13 @@ const drawerLinks = document.querySelectorAll('.drawer-link');
 navToggle.addEventListener('click', () => {
   mobileOverlay.classList.add('active');
   mobileDrawer.classList.add('active');
-  document.body.style.overflow = 'hidden';
+  document.body.classList.add('no-scroll'); // PageSpeed: evita style inline (forced reflow)
 });
 
 function closeMobileMenu() {
   mobileOverlay.classList.remove('active');
   mobileDrawer.classList.remove('active');
-  document.body.style.overflow = '';
+  document.body.classList.remove('no-scroll'); // PageSpeed: evita style inline (forced reflow)
 }
 
 drawerClose.addEventListener('click', closeMobileMenu);
