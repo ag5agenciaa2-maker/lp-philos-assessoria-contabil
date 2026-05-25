@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /Docs/
+Disallow: /.claude/
+Disallow: /.git/
+
+Sitemap: https://www.philoscontabil.com.br/sitemap.xml
