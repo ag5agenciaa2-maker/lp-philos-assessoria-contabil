@@ -834,7 +834,7 @@ function initVideoModal() {
     modal.classList.remove('active');
     modalVideo.pause();
     modalVideo.src = '';
-    document.body.style.overflow = '';
+    document.body.classList.remove('no-scroll');
   }
 
   overlay.addEventListener('click', closeModal);
@@ -857,7 +857,7 @@ function initVideoModal() {
     modalVideo.currentTime = 0;
     modalVideo.muted = false; // Começar com som ativado para uma experiência premium
     modal.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Evitar scroll no fundo
+    document.body.classList.add('no-scroll'); // Evitar scroll no fundo
 
     modalVideo.play().catch(() => {
       // Caso o navegador bloqueie autoplay com som

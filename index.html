@@ -17,7 +17,8 @@
   <title>Philos Assessoria Contábil | Sua empresa cresce. A Philos cuida do resto.</title>
   <link rel="icon" href="Assets/favicon-philos-assessoria-contabil.ico" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="cookie-banner.css">
+  <link rel="preload" href="cookie-banner.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="cookie-banner.css"></noscript>
   <link rel="canonical" href="https://www.philoscontabil.com.br/">
 
   <!-- Meta Tags de Local SEO (Geotags) -->
@@ -322,7 +323,7 @@
           
           <!-- Wrapper do Vídeo (Tamanho original 9:16) -->
           <div class="composition-main-image-wrapper">
-            <video class="composition-main-image" autoplay muted loop playsinline poster="Assets/philos-assessoria-contabil-proprietario-escritorio.webp">
+            <video class="composition-main-image" autoplay muted loop playsinline preload="none" poster="Assets/philos-assessoria-contabil-proprietario-escritorio.webp">
               <source src="https://assets.cdn.filesafe.space/7hzaWcGgawCV1WudlwA7/media/6a144bd5e05851175c7af8db.mp4" type="video/mp4">
             </video>
           </div>
@@ -419,7 +420,7 @@
         <!-- Recepcao Executiva -->
         <div class="gallery-strip">
           <div class="strip-image-wrapper">
-            <img src="Assets/philos-assessoria-contabil-proprietario-escritorio.webp" alt="Recepção Executiva Philos" class="strip-img" loading="lazy">
+            <img src="Assets/philos-assessoria-contabil-proprietario-escritorio.webp" alt="Recepção Executiva Philos" class="strip-img" loading="lazy" width="800" height="600">
             <div class="strip-overlay"></div>
           </div>
           <div class="strip-content">
@@ -433,7 +434,7 @@
         <!-- Area Operacional -->
         <div class="gallery-strip">
           <div class="strip-image-wrapper">
-            <img src="Assets/philos-assessoria-contabil-equipe-escritorio.webp" alt="Área Operacional Philos" class="strip-img" loading="lazy">
+            <img src="Assets/philos-assessoria-contabil-equipe-escritorio.webp" alt="Área Operacional Philos" class="strip-img" loading="lazy" width="800" height="600">
             <div class="strip-overlay"></div>
           </div>
           <div class="strip-content">
@@ -447,7 +448,7 @@
         <!-- Diretoria Executiva -->
         <div class="gallery-strip">
           <div class="strip-image-wrapper">
-            <img src="Assets/philos-assessoria-contabil-sala-diretor-nova-iguacu.webp" alt="Diretoria Executiva Philos" class="strip-img" loading="lazy">
+            <img src="Assets/philos-assessoria-contabil-sala-diretor-nova-iguacu.webp" alt="Diretoria Executiva Philos" class="strip-img" loading="lazy" width="800" height="600">
             <div class="strip-overlay"></div>
           </div>
           <div class="strip-content">
@@ -477,19 +478,6 @@
       <div class="videos-carousel-container reveal-stagger">
         <div class="videos-carousel-track-wrapper">
           <div class="videos-grid" id="videosGrid">
-        <!-- Vídeo 1 (Integração) -->
-        <div class="videos-item">
-          <div class="videos-media-wrapper">
-            <video class="videos-element" muted loop playsinline>
-              <source src="https://assets.cdn.filesafe.space/7hzaWcGgawCV1WudlwA7/media/6a144bde3c3aed7c63bc53db.mp4" type="video/mp4">
-            </video>
-            <div class="video-play-indicator" aria-hidden="true">
-              <svg width="12" height="14" viewBox="0 0 14 16" fill="currentColor"><path d="M13.2 7.2L1.8.4C1-.1.2.4.2 1.2v13.6c0 .8.8 1.3 1.6.8l11.4-6.8c.6-.4.6-1.2 0-1.6z"/></svg>
-            </div>
-          </div>
-          <span class="videos-caption">Integração da Equipe</span>
-        </div>
-
         <!-- Vídeo 2 (Ambiente) -->
         <div class="videos-item">
           <div class="videos-media-wrapper">
@@ -501,32 +489,6 @@
             </div>
           </div>
           <span class="videos-caption">Ambiente de Negócios</span>
-        </div>
-
-        <!-- Vídeo 3 (Mitos e Verdades) -->
-        <div class="videos-item">
-          <div class="videos-media-wrapper">
-            <video class="videos-element" muted loop playsinline>
-              <source src="https://assets.cdn.filesafe.space/7hzaWcGgawCV1WudlwA7/media/6a144bde3c3aed7c63bc53d9.mp4" type="video/mp4">
-            </video>
-            <div class="video-play-indicator" aria-hidden="true">
-              <svg width="12" height="14" viewBox="0 0 14 16" fill="currentColor"><path d="M13.2 7.2L1.8.4C1-.1.2.4.2 1.2v13.6c0 .8.8 1.3 1.6.8l11.4-6.8c.6-.4.6-1.2 0-1.6z"/></svg>
-            </div>
-          </div>
-          <span class="videos-caption">Mitos e verdade</span>
-        </div>
-
-        <!-- Vídeo 4 (Simples Nacional) -->
-        <div class="videos-item">
-          <div class="videos-media-wrapper">
-            <video class="videos-element" muted loop playsinline>
-              <source src="https://assets.cdn.filesafe.space/7hzaWcGgawCV1WudlwA7/media/6a144bde8f966a523ac80502.mp4" type="video/mp4">
-            </video>
-            <div class="video-play-indicator" aria-hidden="true">
-              <svg width="12" height="14" viewBox="0 0 14 16" fill="currentColor"><path d="M13.2 7.2L1.8.4C1-.1.2.4.2 1.2v13.6c0 .8.8 1.3 1.6.8l11.4-6.8c.6-.4.6-1.2 0-1.6z"/></svg>
-            </div>
-          </div>
-          <span class="videos-caption">Empresa desenquadrada do Simples Nacional</span>
         </div>
 
         <!-- Vídeo 5 (Reforma Tributária) -->
@@ -553,19 +515,6 @@
             </div>
           </div>
           <span class="videos-caption">Declarar Imposto de Renda</span>
-        </div>
-
-        <!-- Vídeo 7 (Erros MEI/Pequeno Negócio) -->
-        <div class="videos-item">
-          <div class="videos-media-wrapper">
-            <video class="videos-element" muted loop playsinline>
-              <source src="https://assets.cdn.filesafe.space/7hzaWcGgawCV1WudlwA7/media/6a144bd58f966a523ac80412.mp4" type="video/mp4">
-            </video>
-            <div class="video-play-indicator" aria-hidden="true">
-              <svg width="12" height="14" viewBox="0 0 14 16" fill="currentColor"><path d="M13.2 7.2L1.8.4C1-.1.2.4.2 1.2v13.6c0 .8.8 1.3 1.6.8l11.4-6.8c.6-.4.6-1.2 0-1.6z"/></svg>
-            </div>
-          </div>
-          <span class="videos-caption">3 Erros que MEI, Autônomo e Pequeno Negócio não podem cometer</span>
         </div>
 
         <!-- Vídeo 8 (Golpe da Carta) -->
@@ -603,6 +552,14 @@
         <div class="sobre-text reveal-left">
           <span class="sobre-eyebrow">Quem Somos</span>
           <h2 class="sobre-title">Parceria estratégica para sua empresa <em>prosperar</em></h2>
+
+          <!-- Vídeo da seção "Quem Somos" - visível apenas no mobile -->
+          <div class="mobile-only sobre-mobile-video">
+            <video autoplay muted loop playsinline poster="Assets/philos-assessoria-contabil-sala-diretor-nova-iguacu.webp" style="width: 100%; max-width: 400px; border-radius: 16px;">
+              <source src="https://assets.cdn.filesafe.space/7hzaWcGgawCV1WudlwA7/media/6a144bd51f1059c428f59ad7.mp4" type="video/mp4">
+            </video>
+          </div>
+
           <p class="section-text-white">A Philos centraliza a inteligência contábil, a gestão trabalhista e a retaguarda financeira do seu negócio. Assumimos a complexidade regulatória para assegurar a blindagem patrimonial da sua empresa, proporcionando a tranquilidade técnica que permite à sua liderança focar exclusivamente em expandir mercado.</p>
           
           <div class="sobre-quote">
@@ -613,7 +570,7 @@
           <a href="#servicos" class="btn btn-outline-white">Conheça Nossos Serviços</a>
         </div>
         
-        <div class="sobre-img-container reveal-right">
+        <div class="sobre-img-container reveal-right desktop-only">
           <div class="sobre-img-deco deco-champagne" aria-hidden="true"></div>
           <div class="sobre-img-deco deco-vinho" aria-hidden="true"></div>
           <div class="sobre-img">
@@ -1095,12 +1052,11 @@
       </button>
     </div>
     <div class="drawer-links">
-      <a href="#servicos" class="drawer-link">Servicos</a>
+      <a href="#" class="drawer-link">Inicio</a>
+      <a href="#servicos" class="drawer-link">Servico</a>
+      <a href="#depoimentos" class="drawer-link">Depoimento</a>
       <a href="#sobre" class="drawer-link">Sobre</a>
-      <a href="#depoimentos" class="drawer-link">Depoimentos</a>
-      <a href="#faq" class="drawer-link">FAQ</a>
-      <a href="#localizacao" class="drawer-link">Localizacao</a>
-      <a href="#contato" class="drawer-link drawer-cta">Fale Conosco</a>
+      <a href="#contato" class="drawer-link">Contato</a>
     </div>
   </div>
 
