@@ -80,21 +80,23 @@ const mobileDrawer = document.getElementById('mobileDrawer');
 const drawerClose = document.getElementById('drawerClose');
 const drawerLinks = document.querySelectorAll('.drawer-link');
 
-navToggle.addEventListener('click', () => {
-  mobileOverlay.classList.add('active');
-  mobileDrawer.classList.add('active');
-  document.body.classList.add('no-scroll'); // PageSpeed: evita style inline (forced reflow)
-});
-
 function closeMobileMenu() {
-  mobileOverlay.classList.remove('active');
-  mobileDrawer.classList.remove('active');
+  if (mobileOverlay) mobileOverlay.classList.remove('active');
+  if (mobileDrawer) mobileDrawer.classList.remove('active');
   document.body.classList.remove('no-scroll'); // PageSpeed: evita style inline (forced reflow)
 }
 
-drawerClose.addEventListener('click', closeMobileMenu);
-mobileOverlay.addEventListener('click', closeMobileMenu);
-drawerLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
+// Páginas secundárias (ex: servicos.html) podem não ter o drawer mobile completo
+if (navToggle && mobileOverlay && mobileDrawer) {
+  navToggle.addEventListener('click', () => {
+    mobileOverlay.classList.add('active');
+    mobileDrawer.classList.add('active');
+    document.body.classList.add('no-scroll'); // PageSpeed: evita style inline (forced reflow)
+  });
+  if (drawerClose) drawerClose.addEventListener('click', closeMobileMenu);
+  mobileOverlay.addEventListener('click', closeMobileMenu);
+  drawerLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
+}
 
 // ===== SMOOTH SCROLL =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -109,65 +111,63 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// ===== RENDER SERVICOS =====
+// ===== RENDER SERVICOS (HOME — 6 com imagem) =====
 function renderServicos() {
   const grid = document.getElementById('servicosGrid');
-  const btnVerMais = document.getElementById('btnVerMaisServicos');
   if (!grid) return;
 
-  grid.innerHTML = servicosData.map((nome, i) => {
+  const imagensServicos = [
+    'Assets/philos-servico-contabil.png',
+    'Assets/philos-servico-pessoal.png',
+    'Assets/philos-servico-fiscal.png',
+    'Assets/philos-servico-imposto.png',
+    'Assets/philos-servico-legalizacao.png',
+    'Assets/philos-servico-bpo.png'
+  ];
+
+  // Home exibe apenas os 6 serviços com imagem; os demais ficam na página servicos.html
+  grid.innerHTML = servicosData.slice(0, 6).map((nome, i) => {
     const msg = encodeURIComponent("Olá, vim através do site e gostaria de saber sobre " + nome + ".");
-    const isHidden = i >= 6 ? 'servico-item-hidden' : '';
+    const num = String(i + 1).padStart(2, '0');
     return `
-      <a href="https://wa.me/5521964517864?text=${msg}" target="_blank" rel="noopener noreferrer" class="servico-item ${isHidden}" role="button" aria-label="Saber mais sobre ${nome} pelo WhatsApp">
+      <a href="https://wa.me/5521964517864?text=${msg}" target="_blank" rel="noopener noreferrer" class="servico-item servico-item-com-imagem" role="button" aria-label="Saber mais sobre ${nome} pelo WhatsApp">
+        <div class="servico-bg-image-wrapper">
+          <img src="${imagensServicos[i]}" alt="${nome}" class="servico-bg-img" loading="lazy">
+        </div>
+        <div class="servico-gradient-overlay"></div>
+        <div class="servico-card-content">
+          <span class="servico-num-overlay">${num}</span>
+          <div class="servico-card-footer">
+            <h3 class="servico-nome-overlay">${nome}</h3>
+            <svg class="servico-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </div>
+        </div>
+      </a>
+    `;
+  }).join('');
+}
+
+// ===== RENDER SERVICOS (PÁGINA servicos.html — demais serviços sem imagem) =====
+function renderServicosPage() {
+  const grid = document.getElementById('servicosPageGrid');
+  if (!grid) return;
+
+  // Serviços a partir do 7º (sem imagem), renumerados a partir de 01 nesta página
+  grid.innerHTML = servicosData.slice(6).map((nome, i) => {
+    const msg = encodeURIComponent("Olá, vim através do site e gostaria de saber sobre " + nome + ".");
+    const num = String(i + 1).padStart(2, '0');
+    return `
+      <a href="https://wa.me/5521964517864?text=${msg}" target="_blank" rel="noopener noreferrer" class="servico-item servico-item-simples" role="button" aria-label="Saber mais sobre ${nome} pelo WhatsApp">
         <div class="servico-content">
-          <span class="servico-nome">${nome}</span>
+          <div class="servico-info-meta">
+            <span class="servico-num">${num}</span>
+            <span class="servico-nome">${nome}</span>
+          </div>
           <svg class="servico-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </div>
       </a>
     `;
   }).join('');
-
-  if (btnVerMais) {
-    let isOpen = false;
-    btnVerMais.addEventListener('click', () => {
-      const items = grid.querySelectorAll('.servico-item');
-      
-      if (!isOpen) {
-        // Abrir: Revela todos
-        items.forEach((item, index) => {
-          if (index >= 6) {
-            item.classList.remove('servico-item-hidden');
-            item.classList.add('servico-item-revealed');
-          }
-        });
-        btnVerMais.innerHTML = `
-          Ver Menos Serviços
-          <svg class="btn-arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
-        `;
-        isOpen = true;
-      } else {
-        // Fechar: Oculta a partir do 6º
-        items.forEach((item, index) => {
-          if (index >= 6) {
-            item.classList.remove('servico-item-revealed');
-            item.classList.add('servico-item-hidden');
-          }
-        });
-        btnVerMais.innerHTML = `
-          Ver Todos os Serviços
-          <svg class="btn-arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        `;
-        isOpen = false;
-        
-        // UX de Luxo: Retornar suavemente para o início da seção de serviços ao fechar
-        const section = document.getElementById('servicos');
-        if (section) {
-          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-    });
-  }
 }
 
 // ===== AUXILIAR: PEGAR INICIAIS =====
@@ -188,7 +188,7 @@ function renderDepoimentos() {
   const nextBtn = document.getElementById('depNext');
   if (!stage) return;
 
-  const starSVG = '<svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="currentColor" style="color:var(--dourado)"/></svg>';
+  const starSVG = '<svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="currentColor" style="color:var(--vinho)"/></svg>';
 
   // Render slides (quote only)
   stage.innerHTML = depoimentosData.map((dep, i) => `
@@ -225,10 +225,18 @@ function renderDepoimentos() {
 
   function goTo(index) {
     slides[current].classList.remove('dep-slide--active');
-    current = index;
+    if (index >= slides.length) {
+      current = 0;
+    } else if (index < 0) {
+      current = slides.length - 1;
+    } else {
+      current = index;
+    }
     slides[current].classList.add('dep-slide--active');
-    if (prevBtn) prevBtn.disabled = current === 0;
-    if (nextBtn) nextBtn.disabled = current === slides.length - 1;
+    
+    if (prevBtn) prevBtn.disabled = false;
+    if (nextBtn) nextBtn.disabled = false;
+    
     renderAuthor(depoimentosData[current]);
     updateCounter(current);
   }
@@ -236,10 +244,11 @@ function renderDepoimentos() {
   // Init
   renderAuthor(depoimentosData[0]);
   updateCounter(0);
-  if (prevBtn) prevBtn.disabled = true;
+  if (prevBtn) prevBtn.disabled = false;
+  if (nextBtn) nextBtn.disabled = false;
 
-  if (prevBtn) prevBtn.addEventListener('click', () => { if (current > 0) { goTo(current - 1); resetAutoplay(); } });
-  if (nextBtn) nextBtn.addEventListener('click', () => { if (current < slides.length - 1) { goTo(current + 1); resetAutoplay(); } });
+  if (prevBtn) prevBtn.addEventListener('click', () => { goTo(current - 1); resetAutoplay(); });
+  if (nextBtn) nextBtn.addEventListener('click', () => { goTo(current + 1); resetAutoplay(); });
 
   // Touch swipe
   let touchStartX = 0;
@@ -247,8 +256,8 @@ function renderDepoimentos() {
   stage.addEventListener('touchend', e => {
     const diff = touchStartX - e.changedTouches[0].clientX;
     if (Math.abs(diff) > 50) {
-      if (diff > 0 && current < slides.length - 1) goTo(current + 1);
-      else if (diff < 0 && current > 0) goTo(current - 1);
+      if (diff > 0) goTo(current + 1);
+      else if (diff < 0) goTo(current - 1);
       resetAutoplay();
     }
   });
@@ -256,7 +265,7 @@ function renderDepoimentos() {
   let autoTimer;
   function resetAutoplay() {
     clearInterval(autoTimer);
-    autoTimer = setInterval(() => goTo(current < slides.length - 1 ? current + 1 : 0), 10000);
+    autoTimer = setInterval(() => goTo(current + 1), 6000);
   }
   stage.addEventListener('mouseenter', () => clearInterval(autoTimer));
   stage.addEventListener('mouseleave', resetAutoplay);
@@ -380,9 +389,9 @@ function initForm() {
   if (servicoSelect) {
     servicoSelect.addEventListener('change', () => {
       if (servicoSelect.value) {
-        servicoSelect.style.color = 'var(--off-white)';
+        servicoSelect.style.color = 'var(--grafite)';
       } else {
-        servicoSelect.style.color = 'rgba(242, 235, 217, 0.32)';
+        servicoSelect.style.color = 'rgba(44, 44, 42, 0.65)';
       }
     });
   }
@@ -470,13 +479,14 @@ function initForm() {
       const servico = document.getElementById('formServico').value;
       const mensagem = document.getElementById('formMensagem').value.trim();
 
-      // Monta a mensagem perfeitamente estruturada em lista conforme regras exigidas
-      const textMessage = `Olá, me chamo ${nome}, vim através do site e gostaria de uma informação.
-
-- E-mail: ${email}
-- Telefone: ${telefone}
-- Serviço: ${servico}
-- Mensagem: ${mensagem}`;
+      // Monta a mensagem estruturada em lista conforme as regras da Skill AG5
+      let textMessage = `Olá, me chamo ${nome}, vim através do site e gostaria de uma informação.\n`;
+      textMessage += `\n- E-mail: ${email}`;
+      textMessage += `\n- Telefone: ${telefone}`;
+      textMessage += `\n- Serviço: ${servico}`;
+      if (mensagem) {
+        textMessage += `\n- Mensagem: ${mensagem}`;
+      }
 
       // Abre a API do WhatsApp com redirecionamento limpo
       const waUrl = `https://wa.me/5521964517864?text=${encodeURIComponent(textMessage)}`;
@@ -489,96 +499,108 @@ function initForm() {
   });
 }
 
-// ===== WHATSAPP FLOAT (hide on footer) =====
-function initWhatsAppFloat() {
-  const container = document.querySelector('.wa-premium-container');
-  const footer = document.querySelector('.footer');
-  if (!container || !footer) return;
+/* ──────────────────────────────────────────────
+   WHATSAPP PREMIUM — Balão flutuante (AG5 V4)
 
-  const footerObserver = new IntersectionObserver((entries) => {
+   Timeline:
+     • t=0s  → usuário chega na 3ª seção (ID_SECAO_GATILHO) → botão verde aparece imediatamente
+     • t=25s → balão sobe ("digitando..." por 2.5s → mensagem real)
+     • t=40s → balão some automaticamente (visível por 15s)
+     • t=45s → badge vermelho "1" aparece (5s depois de sumir) — só em nicho tranquilo
+
+   Se o usuário fechar manualmente: badge aparece 5s depois (tranquilo) ou nada (rigoroso).
+   Se o usuário clicar no botão WhatsApp: tudo é limpo (sem badge), abre wa.me.
+─────────────────────────────────────────────── */
+(function initWaPremium() {
+  // ─── CONFIGURAÇÃO POR PROJETO ───
+  const MODO_COMPLIANCE = true; // true = nicho rigoroso (advocacia/médico/contábil) → SEM badge
+                                // false = nicho tranquilo (beleza/varejo/gastronomia) → COM badge
+
+  const bubble        = document.getElementById('wa-message-bubble');
+  const typing        = document.getElementById('wa-typing');
+  const realMessage   = document.getElementById('wa-real-message');
+  const badge         = document.getElementById('wa-notification');
+  const closeBtn      = document.getElementById('wa-close-btn');
+  const mainBtn       = document.getElementById('wa-main-btn');
+  const targetSection = document.getElementById('servicos') || document.body;
+
+  if (!bubble || !typing || !realMessage || !closeBtn || !mainBtn || !targetSection) return;
+
+  const DELAY_BALAO            = 25000; // 25s após entrar na seção
+  const DURATION_TYPING        = 2500;  // 2.5s de "digitando..."
+  const DURATION_BALAO_VISIVEL = 15000; // 15s exibido depois de aparecer
+  const DELAY_BADGE_APOS_SUMIR = 5000;  // 5s após sumir → badge
+
+  let triggered = false;
+  let autoHideTimer = null;
+  let badgeTimer = null;
+  let userClosed = false;
+
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      container.style.opacity = entry.isIntersecting ? '0' : '1';
-      container.style.pointerEvents = entry.isIntersecting ? 'none' : 'auto';
-      container.style.transform = entry.isIntersecting ? 'translateY(20px) scale(0.95)' : 'translateY(0) scale(1)';
+      if (entry.isIntersecting && !triggered) {
+        triggered = true;
+
+        // Botão flutuante aparece imediatamente
+        mainBtn.classList.add('visible');
+
+        // t=25s → balão sobe
+        setTimeout(() => {
+          if (userClosed) return;
+          bubble.classList.add('show');
+
+          // 2.5s de "digitando..." → mensagem real (via classes utilitárias, sem inline style)
+          setTimeout(() => {
+            if (userClosed) return;
+            typing.classList.add('is-hidden');
+            realMessage.classList.add('is-visible');
+            requestAnimationFrame(() => realMessage.classList.add('is-in'));
+          }, DURATION_TYPING);
+
+          // t=40s → balão some automaticamente
+          autoHideTimer = setTimeout(() => {
+            if (userClosed) return;
+            bubble.classList.remove('show');
+
+            // t=45s → badge "1" aparece (só se NÃO for Compliance)
+            if (!MODO_COMPLIANCE && badge) {
+              badgeTimer = setTimeout(() => {
+                if (userClosed) return;
+                badge.classList.add('show');
+              }, DELAY_BADGE_APOS_SUMIR);
+            }
+          }, DURATION_BALAO_VISIVEL);
+        }, DELAY_BALAO);
+      }
     });
   }, { threshold: 0.1 });
 
-  footerObserver.observe(footer);
-}
+  observer.observe(targetSection);
 
-// ===== WHATSAPP PREMIUM EXPERIENCE =====
-function initWaPremium() {
-  const bubble = document.getElementById('wa-message-bubble');
-  const typing = document.getElementById('wa-typing');
-  const realMessage = document.getElementById('wa-real-message');
-  const badge = document.getElementById('wa-notification');
-  const closeBtn = document.getElementById('wa-close-btn');
-  const mainBtn = document.getElementById('wa-main-btn');
-
-  if (!bubble || !typing || !realMessage || !badge || !closeBtn || !mainBtn) return;
-
-  // 1. Mostrar o balão após 6 segundos
-  setTimeout(() => {
-    if (!bubble.classList.contains('show') && !badge.classList.contains('show')) {
-      bubble.classList.add('show');
-
-      // 2. Simular digitação por 2.5 segundos antes de mostrar a mensagem real
-      setTimeout(() => {
-        typing.style.display = 'none';
-        realMessage.style.display = 'block';
-        realMessage.style.opacity = '0';
-        realMessage.style.transition = 'opacity 0.5s ease';
-        // Trigger reflow
-        realMessage.offsetHeight;
-        realMessage.style.opacity = '1';
-      }, 2500);
-    }
-  }, 6000);
-
-  // Fechar o balão ao clicar no botão de fechar
   closeBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    e.stopPropagation();
+    userClosed = true;
     bubble.classList.remove('show');
-    // Mostrar badge de notificação após 2 segundos para engajar o usuário
-    setTimeout(() => {
-      if (!bubble.classList.contains('show')) {
-        badge.classList.add('show');
-      }
-    }, 2000);
+    if (autoHideTimer) clearTimeout(autoHideTimer);
+    if (badgeTimer) clearTimeout(badgeTimer);
+    // Badge pós-close: só em nicho tranquilo
+    if (!MODO_COMPLIANCE && badge) {
+      setTimeout(() => { badge.classList.add('show'); }, DELAY_BADGE_APOS_SUMIR);
+    }
   });
 
-  // Ao clicar no botão principal (WhatsApp), removemos o balão e a badge de notificação
   mainBtn.addEventListener('click', () => {
     bubble.classList.remove('show');
-    badge.classList.remove('show');
+    if (badge) badge.classList.remove('show');
+    if (autoHideTimer) clearTimeout(autoHideTimer);
+    if (badgeTimer) clearTimeout(badgeTimer);
   });
-}
+})();
 
 // ===== GALERIA DE IMAGENS PREMIUM (Nosso Espaço) =====
 function initPremiumGallery() {
-  const gallery = document.querySelector('.premium-accordion-gallery');
-  if (!gallery) return;
-
-  const strips = gallery.querySelectorAll('.gallery-strip');
-
-  strips.forEach(strip => {
-    // Adiciona evento de clique para dispositivos móveis e suporte a toque
-    strip.addEventListener('click', () => {
-      if (strip.classList.contains('active')) return;
-
-      // Remove classe active de todas
-      strips.forEach(s => s.classList.remove('active'));
-      // Adiciona classe active à atual
-      strip.classList.add('active');
-    });
-
-    // Foco de teclado para acessibilidade premium
-    strip.addEventListener('focus', () => {
-      strips.forEach(s => s.classList.remove('active'));
-      strip.classList.add('active');
-    });
-  });
+  // Modelo de grid com exibição estática das imagens, sem necessidade de acordeão
+  return;
 }
 
 // ===== CARROSSEL DE VÍDEOS PREMIUM =====
@@ -834,7 +856,7 @@ function initVideoModal() {
     modal.classList.remove('active');
     modalVideo.pause();
     modalVideo.src = '';
-    document.body.classList.remove('no-scroll');
+    document.body.style.overflow = '';
   }
 
   overlay.addEventListener('click', closeModal);
@@ -846,36 +868,268 @@ function initVideoModal() {
     }
   });
 
-  window.openVideoModal = function(src) {
-    // Pausar todos os outros vídeos da página e resetar posição
-    document.querySelectorAll('.videos-element').forEach(otherVideo => {
-      otherVideo.pause();
-      otherVideo.currentTime = 0;
+  window.openVideoModal = function(src, startTime) {
+    // Pausar todos os outros vídeos da página
+    document.querySelectorAll('video').forEach(otherVideo => {
+      if (otherVideo !== modalVideo) otherVideo.pause();
     });
 
+    const begin = (typeof startTime === 'number' && isFinite(startTime)) ? startTime : 0;
     modalVideo.src = src;
-    modalVideo.currentTime = 0;
     modalVideo.muted = false; // Começar com som ativado para uma experiência premium
     modal.classList.add('active');
-    document.body.classList.add('no-scroll'); // Evitar scroll no fundo
+    document.body.style.overflow = 'hidden'; // Evitar scroll no fundo
 
-    modalVideo.play().catch(() => {
-      // Caso o navegador bloqueie autoplay com som
-    });
+    // Abre no mesmo ponto do vídeo de origem (regra Link 360: ampliar continua de onde parou)
+    const seekAndPlay = () => {
+      try { modalVideo.currentTime = begin; } catch (e) {}
+      modalVideo.play().catch(() => {});
+      modalVideo.removeEventListener('loadedmetadata', seekAndPlay);
+    };
+    if (modalVideo.readyState >= 1) seekAndPlay();
+    else modalVideo.addEventListener('loadedmetadata', seekAndPlay);
   };
+}
+
+// ===== LOCALIZAÇÃO: TABS (MAPA / VÍDEO COMO CHEGAR) =====
+function initLocalizacaoTabs() {
+  const tabs = document.querySelectorAll('.loc-tab-btn');
+  const mapaFrame = document.getElementById('locTabContent-mapa');
+  const videoFrame = document.getElementById('locTabContent-video');
+  const videoEl = videoFrame ? videoFrame.querySelector('video') : null;
+
+  if (!tabs.length || !mapaFrame || !videoFrame) return;
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+
+      const target = btn.getAttribute('data-tab');
+      if (target === 'mapa') {
+        videoFrame.style.display = 'none';
+        mapaFrame.style.display = 'block';
+        if (videoEl) videoEl.pause();
+      } else {
+        mapaFrame.style.display = 'none';
+        videoFrame.style.display = 'block';
+      }
+    });
+  });
+}
+
+// ===== BLOG POST (player inline do vídeo + compartilhar) =====
+function initBlogPost() {
+  // Player inline: toca na própria página (sem pop-up). Clique no vídeo = play/pause.
+  // Overlay com botão de som (mute/unmute) e ampliar (abre o modal global no mesmo tempo).
+  document.querySelectorAll('.blog-post-video').forEach(box => {
+    const video = box.querySelector('video');
+    if (!video) return;
+
+    const btnSound = box.querySelector('.bpv-sound');
+    const btnExpand = box.querySelector('.bpv-expand');
+
+    video.muted = true;
+    video.setAttribute('playsinline', '');
+    box.classList.add('is-paused');
+
+    function syncSoundIcon() {
+      if (!btnSound) return;
+      btnSound.classList.toggle('muted', video.muted);
+      btnSound.setAttribute('aria-label', video.muted ? 'Ativar som' : 'Desativar som');
+    }
+
+    function play() {
+      // Mutex de mídia: pausa qualquer outro vídeo da página
+      document.querySelectorAll('video').forEach(o => { if (o !== video) o.pause(); });
+      video.play().then(() => {
+        box.classList.add('is-playing');
+        box.classList.remove('is-paused');
+      }).catch(() => {});
+    }
+    function pause() {
+      video.pause();
+      box.classList.remove('is-playing');
+      box.classList.add('is-paused');
+    }
+    function toggle() { if (video.paused) play(); else pause(); }
+
+    // Clique em qualquer área do vídeo = play/pause (ignora os botões do overlay)
+    box.addEventListener('click', (e) => {
+      if (e.target.closest('.bpv-controls')) return;
+      toggle();
+    });
+
+    video.addEventListener('ended', () => { box.classList.remove('is-playing'); box.classList.add('is-paused'); });
+
+    // Botão de som (mute/unmute). Ao ativar o som com o vídeo parado, já começa a tocar.
+    if (btnSound) {
+      btnSound.addEventListener('click', (e) => {
+        e.stopPropagation();
+        video.muted = !video.muted;
+        if (!video.muted && video.paused) play();
+        syncSoundIcon();
+      });
+    }
+
+    // Botão ampliar: abre o modal global no mesmo ponto do vídeo
+    if (btnExpand) {
+      btnExpand.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const src = video.querySelector('source') ? video.querySelector('source').src : video.currentSrc;
+        const at = video.currentTime || 0;
+        pause();
+        if (window.openVideoModal) window.openVideoModal(src, at);
+      });
+    }
+
+    syncSoundIcon();
+  });
+
+  // FAQ accordion do post (1 aberto por vez)
+  const faqItems = document.querySelectorAll('.blog-post-faq .blog-faq-item');
+  faqItems.forEach(item => {
+    const q = item.querySelector('.blog-faq-q');
+    if (!q) return;
+    q.addEventListener('click', () => {
+      const wasOpen = item.classList.contains('open');
+      faqItems.forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // Botão copiar link
+  const copyBtn = document.querySelector('.blog-share-btn.copy');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      const url = window.location.href;
+      const done = () => {
+        copyBtn.classList.add('copied');
+        copyBtn.setAttribute('aria-label', 'Link copiado');
+        setTimeout(() => {
+          copyBtn.classList.remove('copied');
+          copyBtn.setAttribute('aria-label', 'Copiar link');
+        }, 2000);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(done).catch(() => {});
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = url;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        document.body.removeChild(ta);
+      }
+    });
+  }
+}
+
+// ===== PLAYER DOS VÍDEOS DO SITE (hero + sobre): som + ampliar + clique play/pause =====
+function initSiteVideoPlayer() {
+  document.querySelectorAll('[data-siteplayer]').forEach(wrap => {
+    const video = wrap.querySelector('video');
+    if (!video) return;
+
+    const btnSound = wrap.querySelector('.sv-sound');
+    const btnExpand = wrap.querySelector('.sv-expand');
+
+    // Mantém o autoplay mudo em loop (quando houver); o controle é por cima
+    video.muted = true;
+
+    function syncSoundIcon() {
+      if (!btnSound) return;
+      btnSound.classList.toggle('muted', video.muted);
+      btnSound.setAttribute('aria-label', video.muted ? 'Ativar som' : 'Desativar som');
+    }
+
+    // Mostra/esconde o indicador de play conforme o estado (para vídeos sem autoplay)
+    function syncState() {
+      wrap.classList.toggle('is-playing', !video.paused);
+      wrap.classList.toggle('is-paused', video.paused);
+    }
+    video.addEventListener('play', syncState);
+    video.addEventListener('pause', syncState);
+    syncState();
+
+    // Clique em qualquer área do vídeo = play/pause (ignora os botões do overlay)
+    wrap.addEventListener('click', (e) => {
+      if (e.target.closest('.sv-controls')) return;
+      if (video.paused) {
+        document.querySelectorAll('video').forEach(o => { if (o !== video) o.pause(); });
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+
+    // Som: ao ativar, pausa outros vídeos com som; se estava pausado, retoma
+    if (btnSound) {
+      btnSound.addEventListener('click', (e) => {
+        e.stopPropagation();
+        video.muted = !video.muted;
+        if (!video.muted) {
+          document.querySelectorAll('video').forEach(o => { if (o !== video) { o.muted = true; } });
+          if (video.paused) video.play().catch(() => {});
+        }
+        syncSoundIcon();
+      });
+    }
+
+    // Ampliar: abre o modal global no mesmo ponto do vídeo
+    if (btnExpand) {
+      btnExpand.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const src = video.querySelector('source') ? video.querySelector('source').src : video.currentSrc;
+        const at = video.currentTime || 0;
+        video.pause();
+        if (window.openVideoModal) window.openVideoModal(src, at);
+      });
+    }
+
+    syncSoundIcon();
+  });
+}
+
+// ===== HERO VIDEO: LOOP ANTECIPADO (CORTE DE 2 SEGUNDOS) =====
+function initHeroVideoLoop() {
+  const heroVideo = document.querySelector('.composition-main-image');
+  if (!heroVideo) return;
+
+  // Desativamos o loop nativo para ter controle sobre a re-inicialização antecipada
+  heroVideo.removeAttribute('loop');
+
+  heroVideo.addEventListener('timeupdate', () => {
+    if (heroVideo.duration) {
+      // Reinicia o vídeo 2 segundos antes do final
+      if (heroVideo.currentTime >= heroVideo.duration - 2) {
+        heroVideo.currentTime = 0;
+        heroVideo.play().catch(() => {});
+      }
+    }
+  });
+
+  // Evento de segurança caso haja lentidão no trigger do timeupdate
+  heroVideo.addEventListener('ended', () => {
+    heroVideo.currentTime = 0;
+    heroVideo.play().catch(() => {});
+  });
 }
 
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
   renderServicos();
+  renderServicosPage();
   renderDepoimentos();
   renderFAQ();
   initObservers();
   initForm();
-  initWhatsAppFloat();
-  initWaPremium();
   initPremiumGallery();
   initVideosCarousel();
   initCustomVideoControls();
   initVideoModal();
+  initLocalizacaoTabs();
+  initBlogPost();
+  initHeroVideoLoop();
+  initSiteVideoPlayer();
 });

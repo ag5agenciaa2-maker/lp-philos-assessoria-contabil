@@ -1,53 +1,25 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Termos e Condições de Uso - Philos Assessoria Contábil. Conheça as regras e diretrizes de utilização do nosso website.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Carregamento Assíncrono do Google Fonts (elimina bloqueio de renderização) -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;500;700&family=Playfair+Display:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;500;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
-  <title>Termos e Condições - Philos Assessoria Contábil</title>
-  <link rel="icon" href="Assets/favicon-philos-assessoria-contabil.ico" type="image/x-icon">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="cookie-banner.css">
-  <link rel="canonical" href="https://www.philoscontabil.com.br/termos-e-condicoes.html">
+<!-- =========================================================
+     TEMPLATE CANÔNICO DE NAV + FOOTER + COOKIE + DRAWER
+     Philos Assessoria Contábil
+     Fonte única de verdade. Copie estes blocos ao criar página nova.
+     Troque {{BASE}} por:  ''  (página na raiz)  ou  '../'  (página em subpasta, ex: blog/).
+     ========================================================= -->
 
-  <!-- Meta Tags Open Graph (Compartilhamento Social) -->
-  <meta property="og:locale" content="pt_BR">
-  <meta property="og:type" content="article">
-  <meta property="og:title" content="Termos e Condições - Philos Assessoria Contábil">
-  <meta property="og:description" content="Conheça os termos de uso e as diretrizes regulatórias para utilização do website da Philos Assessoria Contábil.">
-  <meta property="og:url" content="https://www.philoscontabil.com.br/termos-e-condicoes.html">
-  <meta property="og:site_name" content="Philos Assessoria Contábil">
-  <meta property="og:image" content="https://www.philoscontabil.com.br/Assets/philos-assessoria-contabil-proprietario-escritorio.webp">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="800">
-
-  <!-- Meta Tags Twitter Cards -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Termos e Condições - Philos Assessoria Contábil">
-  <meta name="twitter:description" content="Conheça os termos de uso e as diretrizes regulatórias para utilização do website da Philos Assessoria Contábil.">
-  <meta name="twitter:image" content="https://www.philoscontabil.com.br/Assets/philos-assessoria-contabil-proprietario-escritorio.webp">
-</head>
-<body class="subpage">
-  <!-- ===== NAVBAR ===== -->
+<!-- ===== NAV ===== -->
   <nav class="navbar" id="navbar">
     <div class="container nav-container">
-      <a href="index.html" class="logo">
+      <a href="{{BASE}}index.html" class="logo">
         <picture>
-          <source media="(min-width: 768px)" srcset="Assets/logo-philos-assessoria-contabil-desktop.webp">
-          <img src="Assets/logo-philos-assessoria-contabil-mobile.webp" alt="Logo Philos Assessoria Contábil" height="50" loading="eager">
+          <source media="(min-width: 768px)" srcset="{{BASE}}Assets/logo-philos-assessoria-contabil-desktop.webp">
+          <img src="{{BASE}}Assets/logo-philos-assessoria-contabil-mobile.webp" alt="Logo Philos Assessoria Contábil" height="50" loading="eager">
         </picture>
       </a>
       <div class="nav-links" id="navLinks">
-        <a href="index.html" class="nav-link">Início</a>
-        <a href="index.html#servicos" class="nav-link">Serviço</a>
-        <a href="blog/" class="nav-link">Blog</a>
-        <a href="index.html#sobre" class="nav-link">Sobre</a>
-        <a href="index.html#contato" class="nav-link">Contato</a>
+        <a href="{{BASE}}index.html" class="nav-link">Início</a>
+        <a href="{{BASE}}index.html#servicos" class="nav-link">Serviço</a>
+        <a href="{{BASE}}blog/" class="nav-link">Blog</a>
+        <a href="{{BASE}}index.html#sobre" class="nav-link">Sobre</a>
+        <a href="{{BASE}}index.html#contato" class="nav-link">Contato</a>
       </div>
       <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -55,71 +27,14 @@
     </div>
   </nav>
 
-  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
-  <main>
-    <h1>Termos e Condições de Uso</h1>
-    <p class="last-updated">Última atualização: 20 de maio de 2026</p>
-
-    <section>
-      <h2>1. Aceitação dos Termos</h2>
-      <p>Ao acessar e utilizar o website da Philos Assessoria Contábil, você concorda expressamente em cumprir e respeitar os presentes Termos e Condições de Uso, bem como todas as leis e regulamentos aplicáveis à legislação brasileira. Se você não concordar com qualquer um destes termos, fica proibido de utilizar ou acessar este site.</p>
-    </section>
-
-    <section>
-      <h2>2. Direitos de Propriedade Intelectual</h2>
-      <p>Todo o conteúdo publicado neste website — incluindo, mas não se limitando a, logotipos, textos, imagens, gráficos, fotografias, vídeos (como os de apresentação institucional de nossa sede e equipe no Ed. Merkanbank), códigos-fonte, arquitetura de dados e layout visual — é de propriedade exclusiva da Philos Assessoria Contábil ou de seus licenciadores, estando devidamente protegido pelas leis brasileiras de direitos autorais (Lei nº 9.610/1998) e de propriedade industrial.</p>
-      <p>A reprodução, distribuição, modificação, exibição pública ou criação de obras derivadas de qualquer material deste site, sem autorização prévia por escrito de nossa diretoria, é estritamente proibida.</p>
-    </section>
-
-    <section>
-      <h2>3. Uso Aceitável</h2>
-      <p>Como condição para a utilização deste site, você se compromete a não:</p>
-      <ul>
-        <li>Utilizar o site para qualquer finalidade que seja considerada ilegal, prejudicial ou proibida por estes Termos;</li>
-        <li>Tentar burlar, desativar ou violar as medidas de segurança ou autenticação do site, incluindo os formulários de contato;</li>
-        <li>Utilizar robôs, rastreadores (spiders), scripts automatizados ou outros métodos para realizar varreduras (scraping) ou extração de dados do nosso portal;</li>
-        <li>Transmitir vírus, spywares ou qualquer outro código de natureza destrutiva ou nociva que possa prejudicar o funcionamento dos servidores ou dispositivos de outros usuários.</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>4. Cookies e Tecnologias de Rastreamento</h2>
-      <p>Nosso website faz uso de cookies e outras ferramentas de análise para aprimorar sua experiência de navegação, analisar tráfego e personalizar conteúdos de acordo com suas preferências. A Philos Assessoria Contábil disponibiliza a você, por meio de nosso Painel de Consentimento de Cookies (LGPD), o controle total sobre as categorias de cookies que deseja ativar ou desativar (como cookies Funcionais, Analíticos, de Desempenho e de Publicidade), sendo os cookies "Necessários" de execução obrigatória para o correto funcionamento do site.</p>
-      <p>Para obter mais detalhes sobre o tratamento de seus dados e o funcionamento dos cookies, por favor, consulte nossa <a href="politica-de-privacidade.html" style="color: var(--verde-principal); font-weight: 500;">Política de Privacidade</a>.</p>
-    </section>
-
-    <section>
-      <h2>5. Limitação de Responsabilidade</h2>
-      <p>A Philos Assessoria Contábil se empenha ao máximo para manter as informações deste site corretas, completas e atualizadas. Contudo, os materiais neste website são fornecidos "como estão". Não oferecemos garantias implícitas de comercialização, adequação a um fim específico ou não violação de propriedade intelectual.</p>
-      <p>Em nenhum caso a Philos Assessoria Contábil ou seus diretores serão responsáveis por quaisquer danos diretos ou indiretos decorrentes do uso ou da incapacidade de usar os materiais em nosso site, mesmo que tenhamos sido notificados sobre a possibilidade de tais danos.</p>
-    </section>
-
-    <section>
-      <h2>6. Lei Aplicável e Jurisdição</h2>
-      <p>Estes termos e condições são regidos e interpretados de acordo com a legislação da República Federativa do Brasil, em especial o Código de Defesa do Consumidor, o Marco Civil da Internet e a Lei Geral de Proteção de Dados (LGPD).</p>
-      <p>Para dirimir quaisquer controvérsias decorrentes destes Termos de Uso, as partes elegem o foro da Comarca de Nova Iguaçu, no Estado do Rio de Janeiro, com exclusão de qualquer outro por mais privilegiado que seja.</p>
-    </section>
-
-    <section>
-      <h2>7. Contato</h2>
-      <p>Caso tenha qualquer dúvida em relação a estes Termos e Condições de Uso, sinta-se à vontade para entrar em contato com nossa equipe pelos canais oficiais:</p>
-      <ul>
-        <li><strong>Endereço Sede:</strong> Ed. Merkanbank — R. Otávio Tarquino, 74, Apto 602 — Centro, Nova Iguaçu — RJ, CEP: 26215-342</li>
-        <li><strong>Telefone Fixo:</strong> (21) 2667-1159</li>
-        <li><strong>WhatsApp:</strong> (21) 96451-7864</li>
-        <li><strong>E-mail de Contato:</strong> contato@philoscontabil.com.br</li>
-      </ul>
-    </section>
-  </main>
-
-  <!-- ===== RODAPE ===== -->
+<!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-main">
         <!-- Coluna 1 - Marca -->
         <div class="footer-brand">
-          <a href="index.html" class="footer-logo">
-            <img src="Assets/logo-philos-assessoria-contabil-mobile.webp" alt="Logo Philos Assessoria Contábil" height="36" loading="lazy">
+          <a href="{{BASE}}index.html" class="footer-logo">
+            <img src="{{BASE}}Assets/logo-philos-assessoria-contabil-mobile.webp" alt="Logo Philos Assessoria Contábil" height="36" loading="lazy">
           </a>
           <p class="footer-desc">Assessoria contábil completa para empresas de todo o Brasil. Especialistas em departamento pessoal, fiscal, contábil e consultoria tributária.</p>
           <div class="footer-social">
@@ -136,11 +51,11 @@
         <div class="footer-links">
           <h4>Serviços</h4>
           <ul>
-            <li><a href="index.html#servicos">Legalização de Empresas</a></li>
-            <li><a href="index.html#servicos">Imposto de Renda</a></li>
-            <li><a href="index.html#servicos">Departamento Pessoal</a></li>
-            <li><a href="index.html#servicos">BPO Financeiro</a></li>
-            <li><a href="index.html#servicos">Consultoria Tributária</a></li>
+            <li><a href="{{BASE}}index.html#servicos">Legalização de Empresas</a></li>
+            <li><a href="{{BASE}}index.html#servicos">Imposto de Renda</a></li>
+            <li><a href="{{BASE}}index.html#servicos">Departamento Pessoal</a></li>
+            <li><a href="{{BASE}}index.html#servicos">BPO Financeiro</a></li>
+            <li><a href="{{BASE}}servicos.html">Consultoria Tributária</a></li>
           </ul>
         </div>
 
@@ -148,11 +63,11 @@
         <div class="footer-links">
           <h4>Links Úteis</h4>
           <ul>
-            <li><a href="index.html">Início</a></li>
-            <li><a href="index.html#sobre">Sobre Nós</a></li>
-            <li><a href="index.html#depoimentos">Depoimentos</a></li>
-            <li><a href="index.html#faq">Perguntas Frequentes</a></li>
-            <li><a href="index.html#localizacao">Localização</a></li>
+            <li><a href="{{BASE}}index.html">Início</a></li>
+            <li><a href="{{BASE}}index.html#sobre">Sobre Nós</a></li>
+            <li><a href="{{BASE}}index.html#depoimentos">Depoimentos</a></li>
+            <li><a href="{{BASE}}index.html#faq">Perguntas Frequentes</a></li>
+            <li><a href="{{BASE}}index.html#localizacao">Localização</a></li>
           </ul>
         </div>
 
@@ -173,7 +88,7 @@
               </a>
             </li>
             <li class="footer-contact-item">
-              <a href="https://wa.me/5521964517864?text=Ol%C3%A1%2C%20vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20os%20termos%20de%20uso." target="_blank" rel="noopener noreferrer" role="button" aria-label="Falar pelo WhatsApp">
+              <a href="https://wa.me/5521964517864?text=Ol%C3%A1%2C%20vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20os%20servi%C3%A7os." target="_blank" rel="noopener noreferrer" aria-label="Falar pelo WhatsApp">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                 (21) 96451-7864
               </a>
@@ -204,9 +119,9 @@
               Cookies
             </a>
             <span class="footer-legal-separator">|</span>
-            <a href="termos-e-condicoes.html">Termos e Condições</a>
+            <a href="{{BASE}}termos-e-condicoes.html">Termos e Condições</a>
             <span class="footer-legal-separator">|</span>
-            <a href="politica-de-privacidade.html">Política de Privacidade</a>
+            <a href="{{BASE}}politica-de-privacidade.html">Política de Privacidade</a>
           </div>
         </div>
         <div class="footer-credits-right">
@@ -216,52 +131,12 @@
     </div>
   </footer>
 
-  <!-- WhatsApp Premium Experience -->
-  <div class="wa-premium-container">
-    <!-- Balão de Mensagem Glassmorphism -->
-    <div id="wa-message-bubble" class="wa-bubble">
-      <button class="wa-close" id="wa-close-btn" aria-label="Fechar balão de mensagem">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" width="14" height="14" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
-      </button>
-      <div class="wa-content">
-        <div class="wa-header">
-          <div class="wa-avatar-wrapper">
-            <img src="Assets/philos-assessoria-contabil-proprietario-escritorio.webp" alt="Diretoria Philos" class="wa-avatar" width="48" height="48">
-            <span class="wa-status-dot"></span>
-          </div>
-          <div class="wa-info">
-            <span class="wa-name">Diretoria Philos</span>
-            <!-- Linha abaixo é OPCIONAL. Em nicho rigoroso, NÃO incluir. -->
-            <!-- <span class="wa-status-text">Online agora</span> -->
-          </div>
-        </div>
-        <div id="wa-typing" class="wa-typing">
-          <span></span><span></span><span></span>
-        </div>
-        <div id="wa-real-message" class="wa-message-text" style="display:none;">
-          <p>Olá! Quer levar a contabilidade do seu negócio para outro nível? <strong>A primeira análise é por nossa conta.</strong></p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Botão Flutuante Redondo (SVG oficial WhatsApp com cauda — NÃO trocar) -->
-    <a href="https://wa.me/5521964517864?text=Ol%C3%A1%2C%20vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20agendar%20uma%20consulta."
-       class="wa-float-btn" target="_blank" rel="noopener noreferrer"
-       id="wa-main-btn" aria-label="Fale conosco pelo WhatsApp">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="30" height="30">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-      </svg>
-      <!-- Badge: deixar no HTML mesmo em nicho rigoroso. O JS decide mostrar/não via MODO_COMPLIANCE. -->
-      <span class="wa-badge" id="wa-notification" aria-hidden="true">1</span>
-    </a>
-  </div>
-
-  <!-- ===== MOBILE DRAWER (MENU MOBILE PREMIUM) ===== -->
+<!-- ===== MOBILE DRAWER ===== -->
   <div class="mobile-overlay" id="mobileOverlay"></div>
   <div class="mobile-drawer" id="mobileDrawer">
     <div class="drawer-header">
-      <a href="index.html" class="drawer-logo">
-        <img src="Assets/logo-philos-assessoria-contabil-mobile.webp" alt="Logo Philos Assessoria Contábil" height="40" loading="lazy">
+      <a href="{{BASE}}index.html" class="drawer-logo">
+        <img src="{{BASE}}Assets/logo-philos-assessoria-contabil-mobile.webp" alt="Logo Philos Assessoria Contábil" height="40" loading="lazy">
       </a>
       <button class="drawer-close" id="drawerClose" aria-label="Fechar menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -271,16 +146,16 @@
       </button>
     </div>
     <div class="drawer-links">
-      <a href="index.html#servicos" class="drawer-link">Serviços</a>
-      <a href="blog/" class="drawer-link">Blog</a>
-      <a href="index.html#sobre" class="drawer-link">Sobre</a>
-      <a href="index.html#depoimentos" class="drawer-link">Depoimentos</a>
-      <a href="index.html#localizacao" class="drawer-link">Localização</a>
-      <a href="index.html#contato" class="drawer-link drawer-cta">Fale Conosco</a>
+      <a href="{{BASE}}index.html#servicos" class="drawer-link">Serviços</a>
+      <a href="{{BASE}}blog/" class="drawer-link">Blog</a>
+      <a href="{{BASE}}index.html#sobre" class="drawer-link">Sobre</a>
+      <a href="{{BASE}}index.html#depoimentos" class="drawer-link">Depoimentos</a>
+      <a href="{{BASE}}index.html#localizacao" class="drawer-link">Localização</a>
+      <a href="{{BASE}}index.html#contato" class="drawer-link drawer-cta">Fale Conosco</a>
     </div>
   </div>
 
-  <!-- ========== BANNER DE ACEITE (LGPD) ========== -->
+<!-- ===== COOKIE LGPD (banner + modal + botão flutuante) ===== -->
   <div id="ck-banner" class="ck-banner" role="dialog" aria-modal="true" aria-label="Aviso de cookies" aria-live="polite" aria-hidden="true">
       <div class="ck-banner__inner">
           <div class="ck-banner__content">
@@ -289,7 +164,7 @@
                   Utilizamos cookies para aprimorar sua experiência de navegação, exibir conteúdo
                   personalizado e analisar nosso tráfego. Ao clicar em <strong>"Aceitar todos"</strong>,
                   você concorda com nosso uso de cookies conforme nossa
-                  <a href="politica-de-privacidade.html" class="ck-banner__link">Política de Privacidade</a>.
+                  <a href="{{BASE}}politica-de-privacidade.html" class="ck-banner__link">Política de Privacidade</a>.
               </p>
           </div>
           <div class="ck-banner__actions">
@@ -304,6 +179,7 @@
   <div id="ck-modal" class="ck-modal" role="dialog" aria-modal="true" aria-label="Personalizar preferências de cookies" aria-hidden="true">
       <div class="ck-modal__overlay" id="ck-modal-overlay"></div>
       <div class="ck-modal__box">
+
           <div class="ck-modal__header">
               <h2 class="ck-modal__title">Personalizar preferências de consentimento</h2>
               <button class="ck-modal__close" id="ck-modal-close" aria-label="Fechar modal">
@@ -312,12 +188,15 @@
                   </svg>
               </button>
           </div>
+
           <div class="ck-modal__body">
               <p class="ck-modal__intro">
                   Utilizamos cookies para ajudar você a navegar com eficiência e executar certas funções.
                   Os cookies classificados como <strong>"Necessário"</strong> são essenciais para o
                   funcionamento básico do site e não podem ser desativados.
               </p>
+
+              <!-- Categoria: Necessário (sempre ativo) -->
               <div class="ck-category">
                   <div class="ck-category__header">
                       <div class="ck-category__info">
@@ -329,6 +208,8 @@
                       <span class="ck-category__badge">Sempre ativo</span>
                   </div>
               </div>
+
+              <!-- Categoria: Funcional -->
               <div class="ck-category">
                   <div class="ck-category__header">
                       <div class="ck-category__info">
@@ -343,6 +224,8 @@
                       </label>
                   </div>
               </div>
+
+              <!-- Categoria: Analítico -->
               <div class="ck-category">
                   <div class="ck-category__header">
                       <div class="ck-category__info">
@@ -357,6 +240,8 @@
                       </label>
                   </div>
               </div>
+
+              <!-- Categoria: Desempenho -->
               <div class="ck-category">
                   <div class="ck-category__header">
                       <div class="ck-category__info">
@@ -371,6 +256,8 @@
                       </label>
                   </div>
               </div>
+
+              <!-- Categoria: Publicidade -->
               <div class="ck-category">
                   <div class="ck-category__header">
                       <div class="ck-category__info">
@@ -385,21 +272,23 @@
                       </label>
                   </div>
               </div>
-          </div>
+
+          </div><!-- /.ck-modal__body -->
+
           <div class="ck-modal__footer">
               <button id="ck-modal-reject" class="ck-btn ck-btn--outline">Rejeitar</button>
               <button id="ck-modal-save" class="ck-btn ck-btn--ghost">Salvar Preferências</button>
               <button id="ck-modal-accept-all" class="ck-btn ck-btn--primary">Aceitar todos</button>
           </div>
-      </div>
-  </div>
+
+      </div><!-- /.ck-modal__box -->
+  </div><!-- /#ck-modal -->
 
   <!-- ========== BOTÃO FLUTUANTE (OPCIONAL) ========== -->
   <button id="ck-prefs-btn" class="ck-prefs-btn" aria-label="Preferências de cookies" style="display:none;">
       Cookies
   </button>
 
-  <script src="script.js" defer></script>
-  <script src="cookie-banner.js" defer></script>
-</body>
-</html>
+<!-- ===== SCRIPTS (antes de </body>; libs antes do script.js) ===== -->
+  <script src="{{BASE}}script.js" defer></script>
+  <script src="{{BASE}}cookie-banner.js" defer></script>
