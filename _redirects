@@ -1,0 +1,2 @@
+# Redireciona o dominio apex (sem www) para o www canonico, preservando o caminho
+https://philoscontabil.com.br/*  https://www.philoscontabil.com.br/:splat  301
