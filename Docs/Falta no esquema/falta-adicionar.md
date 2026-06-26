@@ -1,6 +1,6 @@
 # 📋 Falta Adicionar no Schema
-**Empresa:** Philos Assessoria Contábil  
-**Data de geração:** 25/05/2026
+**Empresa:** Contador Nova Iguaçu RJ - Philos Assessoria Contábil | Assessoria Contábil | Consultoria Empresarial  
+**Data de geração:** 22/06/2026
 
 ---
 
@@ -10,10 +10,13 @@
 - [x] `geo.latitude` / `geo.longitude` — Coordenadas oficiais integradas: `-22.7593178, -43.4509727`
 - [x] `address.postalCode` — CEP localizado e integrado: `26215-342`
 - [x] `openingHoursSpecification` — Horários de funcionamento integrados: Seg a Sex das 09:00 às 18:00
+- [x] `identifier.Google CID` — CID decimal do Google Business Profile integrado: `6927923700390484655`
+- [x] `identifier.Google Place ID` — Place ID integrado: `ChIJ83Wi3wZnmQARr9rIWObtJGA`
+- [x] `hasMap` — URL canônica apontando para o CID integrado: `https://maps.google.com/?cid=6927923700390484655`
 
 ## 🟡 IMPORTANTES
 
-- [x] `sameAs` Google Business Profile — Link do perfil da empresa no Google integrado: `https://share.google/K7e6qTWmjBdMr5dp3`
+- [x] `sameAs` Google Business Profile — URL canônica de CID do Google integrado: `https://maps.google.com/?cid=6927923700390484655`
 - [x] `sameAs` Instagram — Link do perfil integrado: `https://www.instagram.com/philosassessoriacontabil/`
 - [x] `sameAs` Facebook — Link da página integrado: `https://www.facebook.com/PhilosAssessoriaContabil/`
 - [x] `aggregateRating` — Nota (5) e avaliações (30) extraídas do Pleper e inseridas
@@ -40,5 +43,6 @@
 
 - [x] `geo.latitude` / `geo.longitude` — Derivadas diretamente das coordenadas reais verificadas pelo Pleper no Ed. Merkanbank: `-22.7593178, -43.4509727`.
 - [x] `name` — Nome real oficial: `Philos Assessoria Contábil`.
-- [x] `alternateName` — Otimizado com palavras-chave de serviço contábil local: `Philos Assessoria Contábil | Escritório de Contabilidade e BPO Financeiro em Nova Iguaçu RJ`.
+- [x] `alternateName` — Otimizado seguindo a fórmula AG5: `Contador Nova Iguaçu RJ - Philos Assessoria Contábil | Assessoria Contábil | Consultoria Empresarial`.
 - [x] `areaServed` — Bairro de origem (Centro de Nova Iguaçu) + 5 bairros vizinhos adjacentes mapeados geograficamente (K11, Moquetá, Rancho Novo, Jardim Iguaçu, Luz).
+- [x] `telephone` + `contactPoint` (Múltiplos telefones) — Array configurado com o número fixo (`+552126671159`) e o WhatsApp (`+5521964517864`).
