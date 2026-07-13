@@ -1,0 +1,29 @@
+# Philos Assessoria Contábil
+
+> Philos Assessoria Contabil - Especialistas em assessoria contabil, fiscal e departamento pessoal. Atendemos empresas de todo o Brasil.
+
+- Endereço: R. Otávio Tarquino, 74, Apto 602, Centro, Nova Iguaçu, RJ
+- Telefone/WhatsApp: ['+552126671159', '+5521964517864']
+- Site: https://philoscontabil.com.br/
+
+## Serviços
+- Legalização de Empresas
+- Imposto de Renda
+- Departamento Pessoal
+- BPO Financeiro
+- Consultoria e Planejamento Tributário
+
+## Páginas
+- [Página inicial](https://philoscontabil.com.br/)
+- [Docs/_blog post template](https://philoscontabil.com.br/Docs/_blog-post-template.html)
+- [Docs/_nav footer template](https://philoscontabil.com.br/Docs/_nav-footer-template.html)
+- [Servicos](https://philoscontabil.com.br/servicos.html)
+- [Artigo: Desenquadramento simples](https://philoscontabil.com.br/blog/desenquadramento-simples.html)
+- [Artigo: Erros mei autonomo](https://philoscontabil.com.br/blog/erros-mei-autonomo.html)
+- [Artigo: Golpe carta exclusao](https://philoscontabil.com.br/blog/golpe-carta-exclusao.html)
+- [Artigo: Imposto de renda](https://philoscontabil.com.br/blog/imposto-de-renda.html)
+- [Blog](https://philoscontabil.com.br/blog/index.html)
+- [Artigo: Planejamento tributario simples](https://philoscontabil.com.br/blog/planejamento-tributario-simples.html)
+- [Artigo: Reforma tributaria](https://philoscontabil.com.br/blog/reforma-tributaria.html)
+
+Atualizado em 2026-07-02. Site desenvolvido por AG5 Agência (ag5agencia.com.br).
